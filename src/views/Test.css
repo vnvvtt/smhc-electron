@@ -1,0 +1,107 @@
+@media (min-width: 768px) {
+  /* Adjust for desktop view */
+  .icon-big img {
+    width: 100%; /* Adjust the percentage as needed */
+    height: auto;
+  }
+}
+
+body {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.full-width-table {
+  width: 100%;
+}
+.table-row {
+  border: 0.5px solid lightgray;
+  height: 50%;
+}
+.logout-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit; /* Or the specific color of your nav links */
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+/* CSS file */
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand-right {
+  text-align: right;
+}
+
+.navbar-brand-right .name {
+  font-size: 0.8rem;
+  margin-bottom: 0; /* Adjust as needed */
+}
+
+.navbar-brand-right .title {
+  font-size: 0.75rem;
+  font-weight: normal;
+  line-height: 0.5; /* Reduce line-height if necessary */
+}
+
+.navbar-brand-right .logout {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  line-height: 2; /* Reduce line-height if necessary */
+  margin-bottom: 0; /* Adjust as needed */
+}
+
+.pageclass {
+  margin-right: 9px;
+}
+.addPLabel {
+  font-weight: bold;
+}
+.custom-button {
+  height: 2.5rem; /* set your desired height */
+  background-color: #007bff; /* set your desired background color */
+  margin: 0.25rem;
+}
+.rttable-button {
+  height: 2.5rem; /* set your desired height */
+  background-color: #007bff; /* set your desired background color */
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+.custom-toggler {
+  border-color: transparent !important;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.logo-img {
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.logo-img img {
+  width: 50px; /* Adjust the width of the logo as needed */
+}
+
+.title {
+  color: white;
+  margin: 0;
+}
+.subtitle {
+  font-size: 0.75rem;
+  font-weight: normal;
+  line-height: 0.5; /* Reduce line-height if necessary */
+  margin: 0;
+}
