@@ -2,3 +2,15 @@ node_modules
 logs
 env
 localdb
+_replicator
+_users
+pouch_all_dbs
+pouch__all_dbs__/000068.ldb
+pouch__all_dbs__/000067.log
+.gitignore
+pouch__all_dbs__/CURRENT
+pouch__all_dbs__/LOCK
+pouch__all_dbs__/LOG
+.gitignore
+pouch__all_dbs__/LOG.old
+pouch__all_dbs__/MANIFEST-000065
