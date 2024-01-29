@@ -1,7 +1,13 @@
-// patientOperations.js
+// patientOperations
+
 const PouchDB = require('pouchdb');
 
 const pouchDB = new PouchDB('localdb');
+
+const { createDatabaseInstance } = require('./database');
+
+
+
 
 const addPatient = async (patientDetails) => {
   try {
@@ -9,9 +15,11 @@ const addPatient = async (patientDetails) => {
       throw new Error('Patient details are required.');
     }
 
-    const patientsDoc = await pouchDB.get('patients').catch(() => ({ _id: 'patients', patients: [] }));
+    const database = createDatabaseInstance();
 
-    const newPatient = { _id: `patient${Date.now()}`, ...patientDetails };
+    const patientsDoc = await database.get('patientsMaster').catch(() => ({ _id: 'patientsMaster', patients: [] }));
+
+    const newPatient = { _id: `patientsMaster${Date.now()}`, ...patientDetails };
 
     patientsDoc.patients.push(newPatient);
 
@@ -30,8 +38,8 @@ const editPatient = async (patientId, updatedPatientDetails) => {
       throw new Error('Patient ID and updated details are required.');
     }
 
-    const patientsDoc = await pouchDB.get('patients').catch(() => {
-      return { _id: 'patients', patients: [] };
+    const patientsDoc = await pouchDB.get('patientsMaster').catch(() => {
+      return { _id: 'patientsMaster', patientsMaster: [] };
     });
 
     const patientToUpdate = patientsDoc.patients.find(patient => patient._id === patientId);
@@ -59,8 +67,8 @@ const deletePatient = async (patientId) => {
       throw new Error('Patient ID is required.');
     }
 
-    const patientsDoc = await pouchDB.get('patients').catch(() => {
-      return { _id: 'patients', patients: [] };
+    const patientsDoc = await pouchDB.get('patientsMaster').catch(() => {
+      return { _id: 'patientsMaster', patientsMaster: [] };
     });
 
     const existingPatient = patientsDoc.patients.find(patient => patient._id === patientId);
@@ -78,4 +86,15 @@ const deletePatient = async (patientId) => {
   }
 };
 
-module.exports = { addPatient, editPatient, deletePatient };
+const getAllPatientIds = async () => {
+    try {
+      const patientsDoc = await pouchDB.get('patientsMaster').catch(() => ({ _id: 'patientsMaster', patientsMaster: [] }));
+      const patientIds = patientsDoc.patientsMaster.map(patient => patient._id);
+      return patientIds;
+    } catch (error) {
+      console.error('Error getting patient IDs:', error);
+      throw new Error('Error getting patient IDs.');
+    }
+  };
+  
+  module.exports = { addPatient, editPatient, deletePatient, getAllPatientIds };
